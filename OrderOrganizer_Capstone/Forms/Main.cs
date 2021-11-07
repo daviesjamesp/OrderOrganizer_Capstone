@@ -19,8 +19,11 @@ namespace OrderOrganizer_Capstone
     {
         private OO_dbEntities dbcontext;
         private UserManager userManager;
+        private OrderManager orderManager;
 
         private OrderInputForm orderInputForm;
+        private OrderListForm orderListForm;
+        private List<OrderEditForm> orderEditForms = new List<OrderEditForm>(5);
 
         private user loggedInUser;
 
@@ -39,10 +42,19 @@ namespace OrderOrganizer_Capstone
         private void InstantiateKeyObjects()
         {
             dbcontext = new OO_dbEntities();
+            
             userManager = new UserManager(dbcontext);
+            orderManager = new OrderManager(dbcontext);
+
             orderInputForm = new OrderInputForm();
             orderInputForm.MdiParent = this;
-            
+            orderInputForm.OrderAdding += orderManager.AddOrderToDB;
+
+            orderListForm = new OrderListForm(dbcontext);
+            orderListForm.MdiParent = this;
+            orderManager.OrderAdded += orderListForm.RefreshOrderList;
+            orderListForm.OrderOpening += OpenOrderForEdit;
+
             // TODO needs more here.
         }
 
@@ -78,6 +90,8 @@ namespace OrderOrganizer_Capstone
             Text = "Order Organizer - Logged in as " + loggedInUser.user_name;
             if (loggedInUser.user_admin) Text += " (Admin)";
 
+            orderInputForm.SetCurrentUser(loggedInUser);
+
             // TODO fill in here with other admin/regular user stuff
         }
 
@@ -87,6 +101,11 @@ namespace OrderOrganizer_Capstone
             {
                 child.Show();
             }
+        }
+
+        private void OpenOrderForEdit(object sender, OrderEventArgs e)
+        {
+
         }
     }
 }

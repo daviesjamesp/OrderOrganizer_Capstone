@@ -32,10 +32,10 @@ namespace OrderOrganizer_Capstone.Forms
             this.rawTextBox = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.statusGroupBox = new System.Windows.Forms.GroupBox();
-            this.statusRbtn0 = new System.Windows.Forms.RadioButton();
-            this.statusRbtn1 = new System.Windows.Forms.RadioButton();
-            this.statusRbtn2 = new System.Windows.Forms.RadioButton();
             this.statusRbtn3 = new System.Windows.Forms.RadioButton();
+            this.statusRbtn2 = new System.Windows.Forms.RadioButton();
+            this.statusRbtn1 = new System.Windows.Forms.RadioButton();
+            this.statusRbtn0 = new System.Windows.Forms.RadioButton();
             this.cancelButton = new System.Windows.Forms.Button();
             this.statusGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -61,6 +61,7 @@ namespace OrderOrganizer_Capstone.Forms
             this.saveButton.TabIndex = 1;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // statusGroupBox
             // 
@@ -77,27 +78,16 @@ namespace OrderOrganizer_Capstone.Forms
             this.statusGroupBox.TabStop = false;
             this.statusGroupBox.Text = "Order Status";
             // 
-            // statusRbtn0
+            // statusRbtn3
             // 
-            this.statusRbtn0.AutoSize = true;
-            this.statusRbtn0.Location = new System.Drawing.Point(6, 52);
-            this.statusRbtn0.Name = "statusRbtn0";
-            this.statusRbtn0.Size = new System.Drawing.Size(162, 24);
-            this.statusRbtn0.TabIndex = 0;
-            this.statusRbtn0.TabStop = true;
-            this.statusRbtn0.Text = "Customer Will-Call";
-            this.statusRbtn0.UseVisualStyleBackColor = true;
-            // 
-            // statusRbtn1
-            // 
-            this.statusRbtn1.AutoSize = true;
-            this.statusRbtn1.Location = new System.Drawing.Point(6, 116);
-            this.statusRbtn1.Name = "statusRbtn1";
-            this.statusRbtn1.Size = new System.Drawing.Size(180, 24);
-            this.statusRbtn1.TabIndex = 1;
-            this.statusRbtn1.TabStop = true;
-            this.statusRbtn1.Text = "Check and Call Back";
-            this.statusRbtn1.UseVisualStyleBackColor = true;
+            this.statusRbtn3.AutoSize = true;
+            this.statusRbtn3.Location = new System.Drawing.Point(6, 244);
+            this.statusRbtn3.Name = "statusRbtn3";
+            this.statusRbtn3.Size = new System.Drawing.Size(146, 24);
+            this.statusRbtn3.TabIndex = 3;
+            this.statusRbtn3.TabStop = true;
+            this.statusRbtn3.Text = "Order Complete";
+            this.statusRbtn3.UseVisualStyleBackColor = true;
             // 
             // statusRbtn2
             // 
@@ -110,16 +100,27 @@ namespace OrderOrganizer_Capstone.Forms
             this.statusRbtn2.Text = "Order In Process";
             this.statusRbtn2.UseVisualStyleBackColor = true;
             // 
-            // statusRbtn3
+            // statusRbtn1
             // 
-            this.statusRbtn3.AutoSize = true;
-            this.statusRbtn3.Location = new System.Drawing.Point(6, 244);
-            this.statusRbtn3.Name = "statusRbtn3";
-            this.statusRbtn3.Size = new System.Drawing.Size(146, 24);
-            this.statusRbtn3.TabIndex = 3;
-            this.statusRbtn3.TabStop = true;
-            this.statusRbtn3.Text = "Order Complete";
-            this.statusRbtn3.UseVisualStyleBackColor = true;
+            this.statusRbtn1.AutoSize = true;
+            this.statusRbtn1.Location = new System.Drawing.Point(6, 116);
+            this.statusRbtn1.Name = "statusRbtn1";
+            this.statusRbtn1.Size = new System.Drawing.Size(180, 24);
+            this.statusRbtn1.TabIndex = 1;
+            this.statusRbtn1.TabStop = true;
+            this.statusRbtn1.Text = "Check and Call Back";
+            this.statusRbtn1.UseVisualStyleBackColor = true;
+            // 
+            // statusRbtn0
+            // 
+            this.statusRbtn0.AutoSize = true;
+            this.statusRbtn0.Location = new System.Drawing.Point(6, 52);
+            this.statusRbtn0.Name = "statusRbtn0";
+            this.statusRbtn0.Size = new System.Drawing.Size(162, 24);
+            this.statusRbtn0.TabIndex = 0;
+            this.statusRbtn0.TabStop = true;
+            this.statusRbtn0.Text = "Customer Will-Call";
+            this.statusRbtn0.UseVisualStyleBackColor = true;
             // 
             // cancelButton
             // 
@@ -131,6 +132,7 @@ namespace OrderOrganizer_Capstone.Forms
             this.cancelButton.TabIndex = 3;
             this.cancelButton.Text = "Clear";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // OrderInputForm
             // 
@@ -147,6 +149,7 @@ namespace OrderOrganizer_Capstone.Forms
             this.Name = "OrderInputForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Order Input";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OrderInputForm_FormClosing);
             this.statusGroupBox.ResumeLayout(false);
             this.statusGroupBox.PerformLayout();
             this.ResumeLayout(false);
