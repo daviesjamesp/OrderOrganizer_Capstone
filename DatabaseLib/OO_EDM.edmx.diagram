@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="08d673e9e11b42698bd8cd78fef8c0c6" Name="Diagram1">
+        <EntityTypeShape EntityType="OO_dbModel.extracted_infos" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OO_dbModel.order" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="OO_dbModel.payment" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OO_dbModel.status" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OO_dbModel.user" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <AssociationConnector Association="OO_dbModel.orders_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="OO_dbModel.orders_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="OO_dbModel.orders_ibfk_3" ManuallyRouted="false" />
+        <AssociationConnector Association="OO_dbModel.orders_ibfk_4" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
