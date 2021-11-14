@@ -46,18 +46,20 @@ namespace OrderOrganizer_Capstone.Forms
             this.rawTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.rawTextBox.Location = new System.Drawing.Point(12, 16);
+            this.rawTextBox.Location = new System.Drawing.Point(8, 10);
+            this.rawTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rawTextBox.Multiline = true;
             this.rawTextBox.Name = "rawTextBox";
-            this.rawTextBox.Size = new System.Drawing.Size(944, 302);
+            this.rawTextBox.Size = new System.Drawing.Size(631, 198);
             this.rawTextBox.TabIndex = 0;
             // 
             // saveButton
             // 
             this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveButton.Location = new System.Drawing.Point(847, 331);
+            this.saveButton.Location = new System.Drawing.Point(565, 224);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(320, 45);
+            this.saveButton.Size = new System.Drawing.Size(213, 29);
             this.saveButton.TabIndex = 1;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
@@ -71,9 +73,11 @@ namespace OrderOrganizer_Capstone.Forms
             this.statusGroupBox.Controls.Add(this.statusRbtn2);
             this.statusGroupBox.Controls.Add(this.statusRbtn1);
             this.statusGroupBox.Controls.Add(this.statusRbtn0);
-            this.statusGroupBox.Location = new System.Drawing.Point(962, 18);
+            this.statusGroupBox.Location = new System.Drawing.Point(641, 12);
+            this.statusGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.statusGroupBox.Name = "statusGroupBox";
-            this.statusGroupBox.Size = new System.Drawing.Size(205, 300);
+            this.statusGroupBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.statusGroupBox.Size = new System.Drawing.Size(137, 195);
             this.statusGroupBox.TabIndex = 2;
             this.statusGroupBox.TabStop = false;
             this.statusGroupBox.Text = "Order Status";
@@ -81,9 +85,10 @@ namespace OrderOrganizer_Capstone.Forms
             // statusRbtn3
             // 
             this.statusRbtn3.AutoSize = true;
-            this.statusRbtn3.Location = new System.Drawing.Point(6, 244);
+            this.statusRbtn3.Location = new System.Drawing.Point(4, 159);
+            this.statusRbtn3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.statusRbtn3.Name = "statusRbtn3";
-            this.statusRbtn3.Size = new System.Drawing.Size(146, 24);
+            this.statusRbtn3.Size = new System.Drawing.Size(98, 17);
             this.statusRbtn3.TabIndex = 3;
             this.statusRbtn3.TabStop = true;
             this.statusRbtn3.Text = "Order Complete";
@@ -92,9 +97,10 @@ namespace OrderOrganizer_Capstone.Forms
             // statusRbtn2
             // 
             this.statusRbtn2.AutoSize = true;
-            this.statusRbtn2.Location = new System.Drawing.Point(6, 180);
+            this.statusRbtn2.Location = new System.Drawing.Point(4, 117);
+            this.statusRbtn2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.statusRbtn2.Name = "statusRbtn2";
-            this.statusRbtn2.Size = new System.Drawing.Size(153, 24);
+            this.statusRbtn2.Size = new System.Drawing.Size(104, 17);
             this.statusRbtn2.TabIndex = 2;
             this.statusRbtn2.TabStop = true;
             this.statusRbtn2.Text = "Order In Process";
@@ -103,9 +109,10 @@ namespace OrderOrganizer_Capstone.Forms
             // statusRbtn1
             // 
             this.statusRbtn1.AutoSize = true;
-            this.statusRbtn1.Location = new System.Drawing.Point(6, 116);
+            this.statusRbtn1.Location = new System.Drawing.Point(4, 75);
+            this.statusRbtn1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.statusRbtn1.Name = "statusRbtn1";
-            this.statusRbtn1.Size = new System.Drawing.Size(180, 24);
+            this.statusRbtn1.Size = new System.Drawing.Size(125, 17);
             this.statusRbtn1.TabIndex = 1;
             this.statusRbtn1.TabStop = true;
             this.statusRbtn1.Text = "Check and Call Back";
@@ -114,9 +121,10 @@ namespace OrderOrganizer_Capstone.Forms
             // statusRbtn0
             // 
             this.statusRbtn0.AutoSize = true;
-            this.statusRbtn0.Location = new System.Drawing.Point(6, 52);
+            this.statusRbtn0.Location = new System.Drawing.Point(4, 34);
+            this.statusRbtn0.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.statusRbtn0.Name = "statusRbtn0";
-            this.statusRbtn0.Size = new System.Drawing.Size(162, 24);
+            this.statusRbtn0.Size = new System.Drawing.Size(109, 17);
             this.statusRbtn0.TabIndex = 0;
             this.statusRbtn0.TabStop = true;
             this.statusRbtn0.Text = "Customer Will-Call";
@@ -126,9 +134,10 @@ namespace OrderOrganizer_Capstone.Forms
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(12, 331);
+            this.cancelButton.Location = new System.Drawing.Point(8, 224);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(320, 45);
+            this.cancelButton.Size = new System.Drawing.Size(213, 29);
             this.cancelButton.TabIndex = 3;
             this.cancelButton.Text = "Clear";
             this.cancelButton.UseVisualStyleBackColor = true;
@@ -137,15 +146,16 @@ namespace OrderOrganizer_Capstone.Forms
             // OrderInputForm
             // 
             this.AcceptButton = this.saveButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(1178, 389);
+            this.ClientSize = new System.Drawing.Size(789, 264);
             this.Controls.Add(this.statusGroupBox);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.rawTextBox);
             this.Controls.Add(this.cancelButton);
-            this.MinimumSize = new System.Drawing.Size(1200, 445);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinimumSize = new System.Drawing.Size(805, 303);
             this.Name = "OrderInputForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Order Input";

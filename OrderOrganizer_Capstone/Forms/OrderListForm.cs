@@ -74,7 +74,7 @@ namespace OrderOrganizer_Capstone.Forms
             RefreshOrderList(_, e);
         }
 
-        private void OrderListForm_FormClosing(object sender, FormClosingEventArgs e)
+        public void OrderListForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
         }
@@ -139,9 +139,18 @@ namespace OrderOrganizer_Capstone.Forms
         private void orderListView_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (orderListView.SelectedIndices.Count == 0) return;
-            var selectedItemTextSubstring = orderListView.SelectedItems[0].SubItems[4].Text.Substring(0, 40);
 
-            var editOrder = dbcontext.orders.Where(o => o.raw_text.Substring(0, 40) == selectedItemTextSubstring).FirstOrDefault();
+            order editOrder;
+            string selectedItemText = orderListView.SelectedItems[0].SubItems[4].Text;
+
+            if (selectedItemText.Length < 40)
+            {
+                editOrder = dbcontext.orders.Where(o => o.raw_text == selectedItemText).FirstOrDefault();
+            }
+            else
+            {
+                editOrder = dbcontext.orders.Where(o => o.raw_text.Substring(0, 40) == orderListView.SelectedItems[0].SubItems[4].Text.Substring(0, 40)).FirstOrDefault();
+            }
 
             if (editOrder is null)
             {
@@ -151,6 +160,11 @@ namespace OrderOrganizer_Capstone.Forms
             {
                 OrderOpening(this, new OrderEventArgs() { Order = editOrder });
             }
+        }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            RefreshOrderList(sender, e);
         }
     }
 }

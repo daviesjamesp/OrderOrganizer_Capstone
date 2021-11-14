@@ -49,6 +49,7 @@ namespace OrderOrganizer_Capstone.Forms
             this.colHasExtInfo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colHasPayment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colText = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.refreshButton = new System.Windows.Forms.Button();
             this.filterGroupBox.SuspendLayout();
             this.dateFilterGroupBox.SuspendLayout();
             this.statusFilterGroupBox.SuspendLayout();
@@ -58,6 +59,7 @@ namespace OrderOrganizer_Capstone.Forms
             // 
             this.filterGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.filterGroupBox.Controls.Add(this.refreshButton);
             this.filterGroupBox.Controls.Add(this.resetFilterButton);
             this.filterGroupBox.Controls.Add(this.dateFilterGroupBox);
             this.filterGroupBox.Controls.Add(this.label1);
@@ -75,7 +77,7 @@ namespace OrderOrganizer_Capstone.Forms
             this.resetFilterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.resetFilterButton.Location = new System.Drawing.Point(417, 174);
             this.resetFilterButton.Name = "resetFilterButton";
-            this.resetFilterButton.Size = new System.Drawing.Size(200, 33);
+            this.resetFilterButton.Size = new System.Drawing.Size(91, 33);
             this.resetFilterButton.TabIndex = 4;
             this.resetFilterButton.Text = "Reset";
             this.resetFilterButton.UseVisualStyleBackColor = true;
@@ -262,6 +264,17 @@ namespace OrderOrganizer_Capstone.Forms
             // 
             this.colText.Text = "Text";
             // 
+            // refreshButton
+            // 
+            this.refreshButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.refreshButton.Location = new System.Drawing.Point(526, 174);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(91, 33);
+            this.refreshButton.TabIndex = 7;
+            this.refreshButton.Text = "Refresh";
+            this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
+            // 
             // OrderListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -309,5 +322,6 @@ namespace OrderOrganizer_Capstone.Forms
         private System.Windows.Forms.CheckBox status2;
         private System.Windows.Forms.CheckBox status1;
         private System.Windows.Forms.CheckBox status0;
+        private System.Windows.Forms.Button refreshButton;
     }
 }

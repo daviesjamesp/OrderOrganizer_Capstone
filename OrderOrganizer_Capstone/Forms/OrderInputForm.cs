@@ -183,7 +183,7 @@ namespace OrderOrganizer_Capstone.Forms
             return null;
         }
 
-        private void OrderInputForm_FormClosing(object sender, FormClosingEventArgs e)
+        public void OrderInputForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
         }

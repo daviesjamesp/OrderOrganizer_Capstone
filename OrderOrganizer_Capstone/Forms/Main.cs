@@ -87,7 +87,7 @@ namespace OrderOrganizer_Capstone
 
         private void PostLoginProcedures()
         {
-            Text = "Order Organizer - Logged in as " + loggedInUser.user_name;
+            Text += " - Logged in as " + loggedInUser.user_name;
             if (loggedInUser.user_admin) Text += " (Admin)";
 
             orderInputForm.SetCurrentUser(loggedInUser);
@@ -105,7 +105,43 @@ namespace OrderOrganizer_Capstone
 
         private void OpenOrderForEdit(object sender, OrderEventArgs e)
         {
+            if (orderEditForms.Count == orderEditForms.Capacity)
+            {
+                MessageBox.Show("Too many Edit windows are open. Please close one or more and retry.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            var newEditForm = new OrderEditForm(e.Order);
+            newEditForm.MdiParent = this;
+            newEditForm.PaymentInfoShown += orderManager.RemovePayInfo;
+            newEditForm.OrderUpdating += orderManager.UpdateOrder;
+            newEditForm.OrderUpdating += orderListForm.RefreshOrderList;
+            newEditForm.Show();
+            orderEditForms.Add(newEditForm);
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExitApplication();
+        }
+
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ExitApplication();
+        }
+
+        private void ExitApplication()
+        {
+            orderInputForm.FormClosing -= orderInputForm.OrderInputForm_FormClosing;
+            orderListForm.FormClosing -= orderListForm.OrderListForm_FormClosing;
+            foreach (var child in this.MdiChildren)
+            {
+                child.Close();
+            }
+
+            dbcontext.Dispose();
+
+            Application.Exit();
         }
     }
 }

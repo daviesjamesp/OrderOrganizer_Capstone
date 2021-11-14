@@ -26,5 +26,22 @@ namespace OrderOrganizer_Capstone.Objects
 
             OrderAdded(this, EventArgs.Empty);
         }
+
+        public void RemovePayInfo(object _, OrderEventArgs oeArgs)
+        {
+            dbcontext.payments.Remove(oeArgs.Order.payment);
+            dbcontext.SaveChanges();
+        }
+
+        public void UpdateOrder(object _, OrderEventArgs oeArgs)
+        {
+            var targetOrder = dbcontext.orders.Where(o => o.order_id == oeArgs.Order.order_id).FirstOrDefault();
+            if (targetOrder != null)
+            {
+                targetOrder.raw_text = oeArgs.Order.raw_text;
+                targetOrder.status = dbcontext.statuses.Where(s => s.status_id == oeArgs.Order.order_status).First();
+                dbcontext.SaveChanges();
+            }
+        }
     }
 }

@@ -138,6 +138,12 @@
     <Compile Include="Forms\OrderListForm.Designer.cs">
       <DependentUpon>OrderListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PayInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PayInfoForm.Designer.cs">
+      <DependentUpon>PayInfoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Objects\CryptoManager.cs" />
     <Compile Include="Objects\OrderEventArgs.cs" />
     <Compile Include="Objects\OrderManager.cs" />
@@ -150,11 +156,17 @@
     <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OrderEditForm.resx">
+      <DependentUpon>OrderEditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\OrderInputForm.resx">
       <DependentUpon>OrderInputForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OrderListForm.resx">
       <DependentUpon>OrderListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PayInfoForm.resx">
+      <DependentUpon>PayInfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
