@@ -24,7 +24,6 @@ namespace OrderOrganizer_Capstone.Forms
             InitializeComponent();
             dbcontext = _dbcontext;
             statusFilterCheckBoxes = new CheckBox[] { status0, status1, status2, status3 };
-            dateFilterTypeCombo.SelectedIndex = 0;
         }
 
         private void FillListColumns(object _, EventArgs e)
@@ -149,7 +148,7 @@ namespace OrderOrganizer_Capstone.Forms
             }
             else
             {
-                editOrder = dbcontext.orders.Where(o => o.raw_text.Substring(0, 40) == orderListView.SelectedItems[0].SubItems[4].Text.Substring(0, 40)).FirstOrDefault();
+                editOrder = dbcontext.orders.Where(o => o.raw_text.Substring(0, 40) == selectedItemText.Substring(0, 40)).FirstOrDefault();
             }
 
             if (editOrder is null)

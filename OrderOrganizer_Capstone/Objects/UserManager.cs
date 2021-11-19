@@ -28,5 +28,7 @@ namespace OrderOrganizer_Capstone
                 return matchedUser;
             else return null;
         }
+
+        // Expanding the application would include adding methods here for user addition, modification, and deletion.
     }
 }

@@ -9,25 +9,24 @@ namespace OrderOrganizer_Capstone.Objects
 {
     public class CryptoManager
     {
-        // TODO extract magic numbers
-        // TODO method cleanup / comments
-
         private const int ITERATIONS = 5000;
 
-        public HashedPasswordInfo GetNewHash(string password)
-        {
-            byte[] salt;
-            var rng = new RNGCryptoServiceProvider();
-            rng.GetBytes(salt = new byte[16]);
-            var pbkdf2 = new Rfc2898DeriveBytes(password, salt, ITERATIONS);
-            var hash = pbkdf2.GetBytes(20);
-            var hashBytes = new byte[36];
-            Array.Copy(salt, 0, hashBytes, 0, 16);
-            Array.Copy(hash, 0, hashBytes, 16, 20);
-            var storedPasswordHash = Convert.ToBase64String(hashBytes);
+        // This method is used to create new password hashes, but is not used in the current application that only
+        // hosts one user. Uncomment once additional features are added to create new user password hashes.
+        //public HashedPasswordInfo GetNewHash(string password)
+        //{
+        //    byte[] salt;
+        //    var rng = new RNGCryptoServiceProvider();
+        //    rng.GetBytes(salt = new byte[16]);
+        //    var pbkdf2 = new Rfc2898DeriveBytes(password, salt, ITERATIONS);
+        //    var hash = pbkdf2.GetBytes(20);
+        //    var hashBytes = new byte[36];
+        //    Array.Copy(salt, 0, hashBytes, 0, 16);
+        //    Array.Copy(hash, 0, hashBytes, 16, 20);
+        //    var storedPasswordHash = Convert.ToBase64String(hashBytes);
 
-            return new HashedPasswordInfo(salt, storedPasswordHash);
-        }
+        //    return new HashedPasswordInfo(salt, storedPasswordHash);
+        //}
 
         public bool CheckPasswordMatch(string password, string retreived_hash, byte[] retrieved_salt)
         {
@@ -45,16 +44,5 @@ namespace OrderOrganizer_Capstone.Objects
 
             return isMatch;
         }
-    }
-
-    public struct HashedPasswordInfo
-    {
-        public HashedPasswordInfo(byte[] _salt, string _storedPasswordHash)
-        {
-            PasswordHash = _storedPasswordHash;
-            Salt = _salt;
-        }
-        public string PasswordHash { get; }
-        public byte[] Salt { get; }
     }
 }

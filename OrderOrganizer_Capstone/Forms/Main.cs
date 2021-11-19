@@ -8,15 +8,21 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 using DatabaseLib;
 using OrderOrganizer_Capstone.Objects;
 using OrderOrganizer_Capstone.Forms;
 using System.Data.Entity;
+using System.Data.Entity.Core.EntityClient;
+using System.Configuration;
 
 namespace OrderOrganizer_Capstone
 {
     public partial class Main : Form
     {
+        private readonly string configFile = Application.StartupPath + "\\oo.config";
+        private string hostString, passString, portString;
+        
         private OO_dbEntities dbcontext;
         private UserManager userManager;
         private OrderManager orderManager;
@@ -34,14 +40,60 @@ namespace OrderOrganizer_Capstone
 
         private void Main_Load(object sender, EventArgs e)
         {
+            GetServerSetup();
             InstantiateKeyObjects();
+            TestConnection();
             LoadDbcontext();
             PromptForLogin();
+        }
+
+        private void TestConnection()
+        {
+            try
+            {
+                dbcontext.Database.Connection.Open();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException)
+            {
+                MessageBox.Show("Server configuration data is incorrect, or the server may be offline. Please reopen application and reenter server credentials.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (File.Exists(configFile)) File.Delete(configFile);
+                Application.Exit();
+            }
+        }
+
+        private void GetServerSetup()
+        {
+            if (File.Exists(configFile))
+            {
+                var splitText = File.ReadAllLines(configFile);
+                if (splitText.Length != 3)
+                    throw new ArgumentException("Configuration file corrupted");
+                hostString = splitText[0];
+                passString = splitText[1];
+                portString = splitText[2];
+            }
+            else
+            {
+                var serverSetupForm = new ServerSetupForm();
+                serverSetupForm.ShowDialog();
+
+                using (StreamWriter writer = new StreamWriter(configFile))
+                {
+                    writer.WriteLine(serverSetupForm.HostName);
+                    writer.WriteLine(serverSetupForm.Password);
+                    writer.WriteLine(serverSetupForm.Port);
+                }
+
+                GetServerSetup();
+            }
         }
 
         private void InstantiateKeyObjects()
         {
             dbcontext = new OO_dbEntities();
+            var connectionString = dbcontext.Database.Connection.ConnectionString;
+            connectionString = connectionString.Replace("_HOST_", hostString).Replace("_PASS_", passString).Replace("port=0", "port=" + portString);
+            dbcontext.Database.Connection.ConnectionString = connectionString;
             
             userManager = new UserManager(dbcontext);
             orderManager = new OrderManager(dbcontext);
@@ -54,16 +106,26 @@ namespace OrderOrganizer_Capstone
             orderListForm.MdiParent = this;
             orderManager.OrderAdded += orderListForm.RefreshOrderList;
             orderListForm.OrderOpening += OpenOrderForEdit;
-
-            // TODO needs more here.
         }
 
         private void LoadDbcontext()
         {
-            dbcontext.users.Load();
-            dbcontext.orders.Load();
-            dbcontext.payments.Load();
-            dbcontext.extracted_infos.Load();
+            try
+            {
+                dbcontext.users.Load();
+                dbcontext.orders.Load();
+                dbcontext.payments.Load();
+                dbcontext.extracted_infos.Load();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                throw new Exception("There was a problem initializing the database connection.", ex);
+            }
+            catch (InvalidOperationException)
+            {
+                // Object has been disposed of but the method was still called due to async connection methods when the app is closed. Ignore.
+            }
+            
         }
 
         private void PromptForLogin()
@@ -91,8 +153,6 @@ namespace OrderOrganizer_Capstone
             if (loggedInUser.user_admin) Text += " (Admin)";
 
             orderInputForm.SetCurrentUser(loggedInUser);
-
-            // TODO fill in here with other admin/regular user stuff
         }
 
         private void Main_Shown(object sender, EventArgs e)
